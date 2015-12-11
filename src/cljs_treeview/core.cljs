@@ -1,5 +1,6 @@
 (ns cljs-treeview.core
-  (:require ))
+  (:require [reagent.core :as r]
+            [cljs-treeview.tree-view :refer [tree-view]]))
 
 (enable-console-print!)
 
@@ -16,3 +17,12 @@
   ;; your application
   ;; (swap! app-state update-in [:__figwheel_counter] inc)
 )
+
+(defn simple-example []
+  [:div
+   "hello"]
+  [tree-view {:value {:a {:b {:c @app-state}}}}])
+
+(defn ^:export run []
+  (r/render [simple-example]
+            (js/document.getElementById "app")))
